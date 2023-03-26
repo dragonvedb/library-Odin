@@ -44,6 +44,8 @@ addToLibrary("Game of Thrones", "George R.R. Martin", 548, false);
 addToLibrary("City of Sol", "Eugene Rudashevsky", 305, true);
 
 createCard(myLibrary[0]);
+createCard(myLibrary[1]);
+createCard(myLibrary[2]);
 
 function allInfo() {
   for (const book of myLibrary) {
