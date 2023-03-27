@@ -33,18 +33,30 @@ function createCard(book) {
   }
 
   const newCard = createElement("article", cardsContainer, "book-card");
-  const cardTitle = createElement("div", newCard, "book-title");
-  cardTitle.textContent = `${book.name} by ${book.author}`;
-  /* newCard.appendChild(cardTitle);
-  cardsContainer.appendChild(newCard); */
+
+  const bookItself = createElement("section", newCard, "book-itself");
+  const bookBlock = createElement("div", bookItself, "book-block");
+  const bookCover = createElement("div", bookItself, "book-cover");
+  bookCover.textContent = book.name;
+
+  const bookInfo = createElement("section", newCard, "book-info");
+  const bookName = createElement("p", bookInfo, "book-name");
+  const bookAuthor = createElement("p", bookInfo, "book-author");
+  const bookDate = createElement("p", bookInfo, "book-date");
+  const bookLength = createElement("p", bookInfo, "book-length");
+
+  const cardButtonGroup = createElement("section", newCard, "card-buttons");
+  const readBtn = createElement("button", cardButtonGroup, "read-btn");
+  const editBtn = createElement("button", cardButtonGroup, "edit-btn");
+  const removeBtn = createElement("button", cardButtonGroup, "remove-btn");
 }
 
 addToLibrary("The Hobbit", "J.R.R. Tolkien", 259, false);
 addToLibrary("Game of Thrones", "George R.R. Martin", 548, false);
 addToLibrary("City of Sol", "Eugene Rudashevsky", 305, true);
 
-/* createCard(myLibrary[0]);
-createCard(myLibrary[1]);
+createCard(myLibrary[0]);
+/* createCard(myLibrary[1]);
 createCard(myLibrary[2]); */
 
 function allInfo() {
