@@ -41,6 +41,13 @@ function createCard(book) {
   const blockWidth = 10 + Math.floor(book.pages / 25);
   bookBlock.setAttribute("style", `height: ${blockWidth}px`);
   const bookCover = createElement("div", bookItself, "book-cover");
+  const coverFontSize = () => {
+    if (book.name.length < 50) {
+      return 3 - book.name.length * 0.05;
+    }
+    return 1;
+  };
+  bookCover.setAttribute("style", `font-size: ${coverFontSize()}rem`);
   bookCover.textContent = book.name;
 
   const bookInfo = createElement("section", newCard, "book-info");
@@ -65,12 +72,28 @@ function createCard(book) {
 }
 
 addToLibrary("The Hobbit", "J.R.R. Tolkien", "1937-9-21", "25", "259", false);
-addToLibrary("Game of Thrones", "George R.R. Martin", 548, false);
-addToLibrary("City of Sol", "Eugene Rudashevsky", 305, true);
+addToLibrary("Ada", "George R.R. Martin", "1996-8-1", "36", "694", false);
+addToLibrary(
+  "Critique of Pure Reason",
+  "Immanuel Kant",
+  "1781-??-??",
+  "54",
+  "856",
+  true
+);
+addToLibrary(
+  "Game Design Workshop: A Playcentric Approach to Creating Innovative Games",
+  "Dr. Seuss",
+  "1957-10-12",
+  "0",
+  "64",
+  true
+);
 
 createCard(myLibrary[0]);
-/* createCard(myLibrary[1]);
-createCard(myLibrary[2]); */
+createCard(myLibrary[1]);
+createCard(myLibrary[2]);
+createCard(myLibrary[3]);
 
 function allInfo() {
   for (const book of myLibrary) {
