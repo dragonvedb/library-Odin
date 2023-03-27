@@ -4,14 +4,16 @@
 
 #cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-auto-rows: 270px;
+    /*grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));*/
+    grid-template-columns: repeat(2, 500px);
+    grid-auto-rows: 325px;
     gap: 20px;
 }
 
 .book-card {
     display: grid;
-    grid-template: ;
+    grid-template: 250px 50px / 175px 1fr;
+    padding: 20px;
     border: 2px black solid;
     
 }
@@ -26,10 +28,14 @@
 }
 
 .book-block {
-    height: 30px;
+    height: 50px;
     width: 175px;
     background-color: blanchedalmond;
     border: 5px solid darkred;
     border-right: 3px solid white;
     border-radius: 3px 0 0 0;
+}
+
+.book-info {
+    grid-column: 2;
 }
