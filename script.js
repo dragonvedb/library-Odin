@@ -38,6 +38,8 @@ function createCard(book) {
 
   const bookItself = createElement("section", newCard, "book-itself");
   const bookBlock = createElement("div", bookItself, "book-block");
+  const blockWidth = 10 + Math.floor(book.pages / 25);
+  bookBlock.setAttribute("style", `height: ${blockWidth}px`);
   const bookCover = createElement("div", bookItself, "book-cover");
   bookCover.textContent = book.name;
 
