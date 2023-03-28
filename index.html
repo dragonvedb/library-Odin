@@ -9,9 +9,51 @@
     <title>LibraryDB</title>
 </head>
 <body>
+    <nav><button>NEW</button></nav>
     <section id="cards-container">
         
     </section>
+    <form id="card-form" action="" method="">
+        <fieldset>
+            <label for="name-field">Title</label>
+            <input id="name-field" name="name" type="text">
+            <label for="author-field">Author</label>
+            <input id="author-field" name="author" type="text">
+        </fieldset>
+
+        <fieldset>
+            <label for="date-field">Publication date</label>
+            <input id="date-field" name="date" type="tel">
+        </fieldset>
+
+        <fieldset>
+            <label for="chapters-field">Chapter count</label>
+            <input id="chapters-field" name="chapters" type="number">
+            <label for="pages-field">Page count</label>
+            <input id="pages-field" name="pages" type="number">
+        </fieldset>
+
+        <fieldset>
+            <label for="color-field">Cover colour</label>
+            <input id="color-field" name="coverColour" type="color">
+            <label for="font-field">Cover font</label>
+            <select id="font-field" name="coverFont">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+                <option value="">4</option>
+                <option value="">5</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <label for="status-field">Have you read this book?</label>
+            <input id="status-field" name="readStatus" type="checkbox">
+        </fieldset>
+
+        <button type="reset">Cancel</button>
+        <button type="submit">Add to Library</button>
+    </form>
 
 <script src="script.js"></script>
 </body>
