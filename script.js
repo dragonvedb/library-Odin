@@ -11,6 +11,7 @@ function Book(
   coverFont,
   readStatus
 ) {
+  this.id = myLibrary.length + 1;
   this.name = name;
   this.author = author;
   this.date = date;
@@ -62,6 +63,7 @@ function createCard(book) {
   }
 
   const newCard = createElement("article", cardsContainer, "book-card");
+  newCard.setAttribute("data-id", book.id);
 
   const bookItself = createElement("section", newCard, "book-itself");
   const bookBlock = createElement("div", bookItself, "book-block");
