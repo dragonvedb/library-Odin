@@ -11,6 +11,8 @@
 }
 
 .book-card {
+    overflow-wrap: break-word;
+    hyphens: auto;
     display: grid;
     grid-template: 250px 50px / 175px 1fr;
     column-gap: 25px;
