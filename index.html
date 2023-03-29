@@ -9,11 +9,11 @@
     <title>LibraryDB</title>
 </head>
 <body>
-    <nav><button>NEW</button></nav>
+    <nav><button id="add-card-btn">NEW</button></nav>
     <section id="cards-container">
         
     </section>
-    <form id="card-form" action="" method="">
+    <form class="hidden" id="card-form" action="" method="GET">
         <fieldset>
             <label for="name-field">Title</label>
             <input id="name-field" name="name" type="text">
@@ -51,7 +51,7 @@
             <input id="status-field" name="readStatus" type="checkbox">
         </fieldset>
 
-        <button type="reset">Cancel</button>
+        <button id="cancel-btn" type="reset">Cancel</button>
         <button type="submit">Add to Library</button>
     </form>
 

@@ -80,3 +80,7 @@
     transform: translateX(-50%);
     background-color: whitesmoke;
 }
+
+.hidden {
+    visibility: hidden;
+}

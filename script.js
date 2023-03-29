@@ -9,12 +9,6 @@ function Book(name, author, date, chapters, pages, readStatus) {
   this.readStatus = readStatus;
 }
 
-Book.prototype.info = function () {
-  return `${this.name} by ${this.author}, ${this.pages} pages long, ${
-    this.readStatus ? "already read" : "not read yet"
-  }.`;
-};
-
 function addToLibrary(name, author, date, chapters, pages, readStatus) {
   const newBook = new Book(name, author, date, chapters, pages, readStatus);
   myLibrary.push(newBook);
@@ -73,6 +67,10 @@ function createCard(book) {
 
 const cardForm = document.getElementById("card-form");
 
+function toggleForm() {
+  cardForm.classList.toggle("hidden");
+}
+
 cardForm.onsubmit = (e) => {
   e.preventDefault();
   const formData = new FormData(cardForm);
@@ -85,7 +83,14 @@ cardForm.onsubmit = (e) => {
     formData.get("status")
   );
   createCard(myLibrary[4]);
+  toggleForm();
 };
+
+const addCardButton = document.getElementById("add-card-btn");
+addCardButton.onclick = () => toggleForm();
+
+const cancelButton = document.getElementById("cancel-btn");
+cancelButton.onclick = () => toggleForm();
 
 addToLibrary("The Hobbit", "J.R.R. Tolkien", "1937-9-21", "25", "259", false);
 addToLibrary("Ada", "George R.R. Martin", "1996-8-1", "36", "694", false);
@@ -110,9 +115,3 @@ createCard(myLibrary[0]);
 createCard(myLibrary[1]);
 createCard(myLibrary[2]);
 createCard(myLibrary[3]);
-
-function allInfo() {
-  for (const book of myLibrary) {
-    console.log(book.info());
-  }
-}
