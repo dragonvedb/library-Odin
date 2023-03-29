@@ -11,7 +11,7 @@ function Book(
   coverFont,
   readStatus
 ) {
-  this.id = myLibrary.length + 1;
+  this.id = `${myLibrary.length + 1}`;
   this.name = name;
   this.author = author;
   this.date = date;
@@ -122,6 +122,14 @@ function createCard(book) {
   editBtn.textContent = "Edit card";
   const removeBtn = createElement("button", cardButtonGroup, "remove-btn");
   removeBtn.textContent = "Remove";
+  removeBtn.addEventListener("click", (e) => {
+    const parentCard = e.target.parentElement.parentElement;
+    const bookEntry = myLibrary.find(
+      (entry) => entry.id === parentCard.getAttribute("data-id")
+    );
+    myLibrary.splice(myLibrary.indexOf(bookEntry), 1);
+    parentCard.remove();
+  });
 }
 
 const cardForm = document.getElementById("card-form");
