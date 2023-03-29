@@ -71,6 +71,22 @@ function createCard(book) {
   removeBtn.textContent = "Remove";
 }
 
+const cardForm = document.getElementById("card-form");
+
+cardForm.onsubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData(cardForm);
+  addToLibrary(
+    formData.get("name"),
+    formData.get("author"),
+    formData.get("date"),
+    formData.get("chapters"),
+    formData.get("pages"),
+    formData.get("status")
+  );
+  createCard(myLibrary[4]);
+};
+
 addToLibrary("The Hobbit", "J.R.R. Tolkien", "1937-9-21", "25", "259", false);
 addToLibrary("Ada", "George R.R. Martin", "1996-8-1", "36", "694", false);
 addToLibrary(
