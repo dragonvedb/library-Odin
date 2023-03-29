@@ -1,16 +1,49 @@
 const myLibrary = [];
 
-function Book(name, author, date, chapters, pages, readStatus) {
+function Book(
+  name,
+  author,
+  date,
+  chapters,
+  pages,
+  coverColour,
+  textColour,
+  coverFont,
+  readStatus
+) {
   this.name = name;
   this.author = author;
   this.date = date;
   this.chapters = chapters;
   this.pages = pages;
+  this.coverColour = coverColour;
+  this.textColour = textColour;
+  this.coverFont = coverFont;
   this.readStatus = readStatus;
 }
 
-function addToLibrary(name, author, date, chapters, pages, readStatus) {
-  const newBook = new Book(name, author, date, chapters, pages, readStatus);
+function addToLibrary(
+  name,
+  author,
+  date,
+  chapters,
+  pages,
+  coverColour,
+  textColour,
+  coverFont,
+  readStatus
+) {
+  const newBook = new Book(
+    name,
+    author,
+    date,
+    chapters,
+    pages,
+    coverColour,
+    textColour,
+    coverFont,
+    readStatus
+  );
   myLibrary.push(newBook);
 }
 
@@ -33,15 +66,39 @@ function createCard(book) {
   const bookItself = createElement("section", newCard, "book-itself");
   const bookBlock = createElement("div", bookItself, "book-block");
   const blockWidth = 10 + Math.floor(book.pages / 25);
-  bookBlock.setAttribute("style", `height: ${blockWidth}px`);
+  bookBlock.setAttribute(
+    "style",
+    `height: ${blockWidth}px; border-color: ${book.coverColour}; border-right: 1px solid transparent`
+  );
   const bookCover = createElement("div", bookItself, "book-cover");
+  const coverFontFamily = () => {
+    switch (book.coverFont) {
+      case 1:
+        return '"Times New Roman", serif';
+      case 2:
+        return "Helvetica, sans-serif";
+      case 3:
+        break;
+      case 4:
+        break;
+      case 5:
+        break;
+      default:
+        return "cursive";
+    }
+  };
   const coverFontSize = () => {
     if (book.name.length < 50) {
       return 3 - book.name.length * 0.05;
     }
     return 1;
   };
-  bookCover.setAttribute("style", `font-size: ${coverFontSize()}rem`);
+  bookCover.setAttribute(
+    "style",
+    `background-color: ${book.coverColour}; color: ${
+      book.textColour
+    }; font-family: ${coverFontFamily()}; font-size: ${coverFontSize()}rem`
+  );
   bookCover.textContent = book.name;
 
   const bookInfo = createElement("section", newCard, "book-info");
@@ -80,6 +137,9 @@ cardForm.onsubmit = (e) => {
     formData.get("date"),
     formData.get("chapters"),
     formData.get("pages"),
+    formData.get("coverColour"),
+    formData.get("textColour"),
+    formData.get("coverFont"),
     formData.get("status")
   );
   createCard(myLibrary[4]);
@@ -92,14 +152,37 @@ addCardButton.onclick = () => toggleForm();
 const cancelButton = document.getElementById("cancel-btn");
 cancelButton.onclick = () => toggleForm();
 
-addToLibrary("The Hobbit", "J.R.R. Tolkien", "1937-9-21", "25", "259", false);
-addToLibrary("Ada", "George R.R. Martin", "1996-8-1", "36", "694", false);
+addToLibrary(
+  "The Hobbit",
+  "J.R.R. Tolkien",
+  "1937-9-21",
+  "25",
+  "259",
+  "red",
+  "white",
+  1,
+  false
+);
+addToLibrary(
+  "Ada",
+  "George R.R. Martin",
+  "1996-8-1",
+  "36",
+  "694",
+  "orange",
+  "green",
+  2,
+  false
+);
 addToLibrary(
   "Critique of Pure Reason",
   "Immanuel Kant",
   "1781-??-??",
   "54",
   "856",
+  "azure",
+  "lightblue",
+  1,
   true
 );
 addToLibrary(
@@ -108,6 +191,9 @@ addToLibrary(
   "1957-10-12",
   "0",
   "64",
+  "violet",
+  "white",
+  2,
   true
 );
 
