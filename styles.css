@@ -37,6 +37,7 @@
     font-weight: bold;
     line-height: 1em;
     color: whitesmoke;
+    text-shadow: 0 0 1px black;
 }
 
 .book-block {
