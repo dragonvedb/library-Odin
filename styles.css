@@ -4,8 +4,8 @@
 
 #cards-container {
     display: grid;
-    /*grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));*/
-    grid-template-columns: repeat(2, 500px);
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    /*grid-template-columns: repeat(2, 500px);*/
     grid-auto-rows: 325px;
     gap: 20px;
 }
@@ -81,17 +81,53 @@
 
 #card-form {
     position: fixed;
-    width: 500px;
+    width: 400px;
     top: 50px;
     left: 50%;
     transform: translateX(-50%);
     background-color: whitesmoke;
+    font-size: 1.1rem;
+}
+
+#card-form input {
+    appearance: none;
 }
 
 #card-form fieldset {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    gap: 5px 10px;
 }
+
+#card-form fieldset * {
+    align-self: center;
+}
+
+#fs-title {
+    /*grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;*/
+}
+
+#fs-date {
+    grid-template-columns: auto 1fr;
+}
+
+#fs-length {
+    grid-template-columns: fit-content() 0.5fr auto 1fr;
+}
+
+#fs-cover {
+    grid-template-columns: auto 1fr auto 1fr;
+}
+
+#card-form input[type='text'],
+#card-form input[type='tel'] {
+    width: 100%;
+    padding-left: 0.5rem;
+}
+
+
+
+
 
 /*.hidden {
     visibility: hidden;
