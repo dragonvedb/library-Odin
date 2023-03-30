@@ -11,7 +11,7 @@ function Book(
   coverFont,
   readStatus
 ) {
-  this.id = `${myLibrary.length + 1}`;
+  this.id = `${myLibrary.length}`;
   this.name = name;
   this.author = author;
   this.date = date;
@@ -50,7 +50,7 @@ function addToLibrary(
 
 const cardsContainer = document.querySelector("#cards-container");
 
-function createCard(book) {
+Book.prototype.createCard = function () {
   function createElement(tag, parentElem, ...elemClasses) {
     const newElement = document.createElement(tag);
 
@@ -63,18 +63,18 @@ function createCard(book) {
   }
 
   const newCard = createElement("article", cardsContainer, "book-card");
-  newCard.setAttribute("data-id", book.id);
+  newCard.setAttribute("data-id", this.id);
 
   const bookItself = createElement("section", newCard, "book-itself");
   const bookBlock = createElement("div", bookItself, "book-block");
-  const blockWidth = 10 + Math.floor(book.pages / 25);
+  const blockWidth = 10 + Math.floor(this.pages / 25);
   bookBlock.setAttribute(
     "style",
-    `height: ${blockWidth}px; border-color: ${book.coverColour}; border-right: 1px solid transparent`
+    `height: ${blockWidth}px; border-color: ${this.coverColour}; border-right: 1px solid transparent`
   );
   const bookCover = createElement("div", bookItself, "book-cover");
   const coverFontFamily = () => {
-    switch (book.coverFont) {
+    switch (this.coverFont) {
       case 1:
         return '"Times New Roman", serif';
       case 2:
@@ -90,30 +90,30 @@ function createCard(book) {
     }
   };
   const coverFontSize = () => {
-    if (book.name.length < 50) {
-      return 3 - book.name.length * 0.05;
+    if (this.name.length < 50) {
+      return 3 - this.name.length * 0.05;
     }
     return 1;
   };
   bookCover.setAttribute(
     "style",
-    `background-color: ${book.coverColour}; color: ${
-      book.textColour
+    `background-color: ${this.coverColour}; color: ${
+      this.textColour
     }; font-family: ${coverFontFamily()}; font-size: ${coverFontSize()}rem`
   );
-  bookCover.textContent = book.name;
+  bookCover.textContent = this.name;
 
   const bookInfo = createElement("section", newCard, "book-info");
   const bookName = createElement("p", bookInfo, "book-name");
-  bookName.textContent = book.name;
+  bookName.textContent = this.name;
   const bookAuthor = createElement("p", bookInfo, "book-author");
-  bookAuthor.textContent = `by ${book.author}`;
+  bookAuthor.textContent = `by ${this.author}`;
   const bookDate = createElement("p", bookInfo, "book-date");
-  bookDate.textContent = `Publication date: ${book.date}`;
+  bookDate.textContent = `Publication date: ${this.date}`;
   const bookLength = createElement("p", bookInfo, "book-length");
-  if (book.chapters > 1) {
-    bookLength.textContent = `${book.chapters} chapters || ${book.pages} pages`;
-  } else bookLength.textContent = `${book.pages} pages`;
+  if (this.chapters > 1) {
+    bookLength.textContent = `${this.chapters} chapters || ${this.pages} pages`;
+  } else bookLength.textContent = `${this.pages} pages`;
 
   const cardButtonGroup = createElement("section", newCard, "card-buttons");
   const readBtn = createElement("button", cardButtonGroup, "read-btn");
@@ -123,14 +123,15 @@ function createCard(book) {
   const removeBtn = createElement("button", cardButtonGroup, "remove-btn");
   removeBtn.textContent = "Remove";
   removeBtn.addEventListener("click", (e) => {
+    console.log(this);
     const parentCard = e.target.parentElement.parentElement;
-    const bookEntry = myLibrary.find(
+    /* const bookEntry = myLibrary.find(
       (entry) => entry.id === parentCard.getAttribute("data-id")
-    );
-    myLibrary.splice(myLibrary.indexOf(bookEntry), 1);
+    ); */
+    myLibrary.splice(myLibrary.indexOf(this), 1);
     parentCard.remove();
   });
-}
+};
 
 const cardForm = document.getElementById("card-form");
 
@@ -152,7 +153,7 @@ cardForm.onsubmit = (e) => {
     formData.get("coverFont"),
     formData.get("status")
   );
-  createCard(myLibrary[4]);
+  myLibrary[4].createCard();
   toggleForm();
 };
 
@@ -207,7 +208,7 @@ addToLibrary(
   true
 );
 
-createCard(myLibrary[0]);
-createCard(myLibrary[1]);
-createCard(myLibrary[2]);
-createCard(myLibrary[3]);
+myLibrary[0].createCard();
+myLibrary[1].createCard();
+myLibrary[2].createCard();
+myLibrary[3].createCard();
