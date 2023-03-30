@@ -15,42 +15,60 @@
     </section>
     <form class="hidden" id="card-form" action="" method="GET">
         <fieldset>
-            <label for="name-field">Title</label>
-            <input id="name-field" name="name" type="text">
-            <label for="author-field">Author</label>
-            <input id="author-field" name="author" type="text">
+            <div>
+                <label for="name-field">Title</label>
+                <input id="name-field" name="name" type="text" maxlength="75" required>
+            </div>
+            <div>
+                <label for="author-field">Author</label>
+                <input id="author-field" name="author" type="text" maxlength="50" required>
+            </div>
         </fieldset>
 
         <fieldset>
-            <label for="date-field">Publication date</label>
-            <input id="date-field" name="date" type="tel">
+            <div>    
+                <label for="date-field">Publication date</label>
+                <input id="date-field" name="date" type="tel" maxlength="25" required>
+            </div>
         </fieldset>
 
         <fieldset>
-            <label for="chapters-field">Chapter count</label>
-            <input id="chapters-field" name="chapters" type="number">
-            <label for="pages-field">Page count</label>
-            <input id="pages-field" name="pages" type="number">
+            <div>    
+                <label for="chapters-field">Chapter count</label>
+                <input id="chapters-field" name="chapters" type="number" min="0" max="999">
+            </div>
+            <div>    
+                <label for="pages-field">Page count</label>
+                <input id="pages-field" name="pages" type="number" min="1" max="9999" value="1" required>
+            </div>
         </fieldset>
 
         <fieldset>
-            <label for="color-field">Cover colour</label>
-            <input id="color-field" name="coverColour" type="color">
-            <label for="text-color-field">Cover colour</label>
-            <input id="text-color-field" name="textColour" type="color">
-            <label for="font-field">Cover font</label>
-            <select id="font-field" name="coverFont">
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-                <option value="">5</option>
-            </select>
+            <div>    
+                <label for="color-field">Cover colour</label>
+                <input id="color-field" name="coverColour" type="color" value="#ff0000">
+            </div>
+            <div>    
+                <label for="text-color-field">Cover colour</label>
+                <input id="text-color-field" name="textColour" type="color" value="#ffffff">
+            </div>
+            <div>    
+                <label for="font-field">Cover font</label>
+                <select id="font-field" name="coverFont">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                    <option value="">5</option>
+                </select>
+            </div>
         </fieldset>
 
         <fieldset>
-            <label for="status-field">Have you read this book?</label>
-            <input id="status-field" name="readStatus" type="checkbox">
+            <div>    
+                <label for="status-field">Have you read this book?</label>
+                <input id="status-field" name="readStatus" type="checkbox">
+            </div>
         </fieldset>
 
         <button id="cancel-btn" type="reset">Cancel</button>
