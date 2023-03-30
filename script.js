@@ -23,31 +23,6 @@ function Book(
   this.readStatus = readStatus;
 }
 
-function addToLibrary(
-  name,
-  author,
-  date,
-  chapters,
-  pages,
-  coverColour,
-  textColour,
-  coverFont,
-  readStatus
-) {
-  const newBook = new Book(
-    name,
-    author,
-    date,
-    chapters,
-    pages,
-    coverColour,
-    textColour,
-    coverFont,
-    readStatus
-  );
-  myLibrary.push(newBook);
-}
-
 const cardsContainer = document.querySelector("#cards-container");
 
 Book.prototype.createCard = function () {
@@ -118,8 +93,6 @@ Book.prototype.createCard = function () {
   const cardButtonGroup = createElement("section", newCard, "card-buttons");
   const readBtn = createElement("button", cardButtonGroup, "read-btn");
   readBtn.textContent = "Mark as read";
-  const editBtn = createElement("button", cardButtonGroup, "edit-btn");
-  editBtn.textContent = "Edit card";
   const removeBtn = createElement("button", cardButtonGroup, "remove-btn");
   removeBtn.textContent = "Remove";
   removeBtn.addEventListener("click", (e) => {
@@ -142,7 +115,7 @@ function toggleForm() {
 cardForm.onsubmit = (e) => {
   e.preventDefault();
   const formData = new FormData(cardForm);
-  addToLibrary(
+  const newBook = new Book(
     formData.get("name"),
     formData.get("author"),
     formData.get("date"),
@@ -153,7 +126,8 @@ cardForm.onsubmit = (e) => {
     formData.get("coverFont"),
     formData.get("status")
   );
-  myLibrary[4].createCard();
+  myLibrary.push(newBook);
+  newBook.createCard();
   toggleForm();
 };
 
@@ -162,53 +136,3 @@ addCardButton.onclick = () => toggleForm();
 
 const cancelButton = document.getElementById("cancel-btn");
 cancelButton.onclick = () => toggleForm();
-
-addToLibrary(
-  "The Hobbit",
-  "J.R.R. Tolkien",
-  "1937-9-21",
-  "25",
-  "259",
-  "red",
-  "white",
-  1,
-  false
-);
-addToLibrary(
-  "Ada",
-  "George R.R. Martin",
-  "1996-8-1",
-  "36",
-  "694",
-  "orange",
-  "green",
-  2,
-  false
-);
-addToLibrary(
-  "Critique of Pure Reason",
-  "Immanuel Kant",
-  "1781-??-??",
-  "54",
-  "856",
-  "azure",
-  "lightblue",
-  1,
-  true
-);
-addToLibrary(
-  "Game Design Workshop: A Playcentric Approach to Creating Innovative Games",
-  "Dr. Seuss",
-  "1957-10-12",
-  "0",
-  "64",
-  "violet",
-  "white",
-  2,
-  true
-);
-
-myLibrary[0].createCard();
-myLibrary[1].createCard();
-myLibrary[2].createCard();
-myLibrary[3].createCard();
