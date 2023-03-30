@@ -96,11 +96,7 @@ Book.prototype.createCard = function () {
   const removeBtn = createElement("button", cardButtonGroup, "remove-btn");
   removeBtn.textContent = "Remove";
   removeBtn.addEventListener("click", (e) => {
-    console.log(this);
     const parentCard = e.target.parentElement.parentElement;
-    /* const bookEntry = myLibrary.find(
-      (entry) => entry.id === parentCard.getAttribute("data-id")
-    ); */
     myLibrary.splice(myLibrary.indexOf(this), 1);
     parentCard.remove();
   });
