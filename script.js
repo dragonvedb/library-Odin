@@ -42,7 +42,8 @@ Book.prototype.createCard = function () {
 
   const bookItself = createElement("section", newCard, "book-itself");
   const bookBlock = createElement("div", bookItself, "book-block");
-  const blockWidth = 10 + Math.floor(this.pages / 25);
+  let blockWidth = 10 + Math.floor(this.pages / 25);
+  if (blockWidth > 50) blockWidth = 50;
   bookBlock.setAttribute(
     "style",
     `height: ${blockWidth}px; border-color: ${this.coverColour}; border-right: 1px solid transparent`
