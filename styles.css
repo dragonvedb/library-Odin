@@ -11,6 +11,7 @@
 }
 
 .book-card {
+    position: relative;
     overflow-wrap: break-word;
     hyphens: auto;
     display: grid;
@@ -87,6 +88,22 @@
 
 .book-card.read .status-button::before {
     content: "Read";
+}
+
+.book-card.read::after{
+    position: absolute;
+    display: flex;
+    right: -0px;
+    transform: translate(50%, -50%);
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: green;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    content: 'X';
+
 }
 
 .card-buttons {
