@@ -45,10 +45,11 @@
 .book-block {
     height: 50px;
     width: 175px;
-    background-color: bisque;
+    background-color: hsl(50, 100%, 95%);
     border: 5px solid red;
     border-right: 1px solid transparent;
     border-radius: 4px 0 0 0;
+    filter: saturate(90%) brightness(90%);
 }
 
 .book-info {
@@ -81,12 +82,19 @@
 
 #card-form {
     position: fixed;
-    width: 400px;
+    width: 450px;
     top: 50px;
     left: 50%;
     transform: translateX(-50%);
     background-color: whitesmoke;
     font-size: 1.1rem;
+    z-index: 2;
+}
+
+#card-form .tint {
+    height: 100vh;
+    width: 100vw;
+    background-color: burlywood;
 }
 
 #card-form input {
@@ -125,10 +133,6 @@
     padding-left: 0.5rem;
 }
 
-
-
-
-
-/*.hidden {
+.hidden {
     visibility: hidden;
 }
