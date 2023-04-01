@@ -90,7 +90,6 @@
 }
 
 .card-buttons {
-    grid-column: 1 / 3;
     align-self: center;
     display: flex;
     height: 25px;
