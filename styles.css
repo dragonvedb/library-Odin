@@ -72,6 +72,23 @@
     font-style: italic;
 }
 
+.status-button {
+    background-color: red;
+    color: white;
+}
+
+.book-card.read .status-button {
+    background-color: green;
+}
+
+.status-button::before {
+    content: "Not read";
+}
+
+.book-card.read .status-button::before {
+    content: "Read";
+}
+
 .card-buttons {
     grid-column: 1 / 3;
     align-self: center;

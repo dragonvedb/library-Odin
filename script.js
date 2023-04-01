@@ -20,7 +20,7 @@ function Book(
   this.coverColour = coverColour;
   this.textColour = textColour;
   this.coverFont = coverFont;
-  this.readStatus = readStatus;
+  this.readStatus = !!readStatus;
 }
 
 const cardsContainer = document.querySelector("#cards-container");
@@ -39,6 +39,7 @@ Book.prototype.createCard = function () {
 
   const newCard = createElement("article", cardsContainer, "book-card");
   newCard.setAttribute("data-id", this.id);
+  if (this.readStatus) newCard.classList.add("read");
 
   const bookItself = createElement("section", newCard, "book-itself");
   const bookBlock = createElement("div", bookItself, "book-block");
@@ -91,9 +92,18 @@ Book.prototype.createCard = function () {
     bookLength.textContent = `${this.chapters} chapters || ${this.pages} pages`;
   } else bookLength.textContent = `${this.pages} pages`;
 
+  const statusBtn = createElement("button", newCard, "status-button");
+  statusBtn.addEventListener("click", (e) => {
+    const parentCard = e.target.parentElement;
+    parentCard.classList.toggle("read");
+    if (this.readStatus === true) {
+      this.readStatus = false;
+    } else this.readStatus = true;
+  });
+
   const cardButtonGroup = createElement("section", newCard, "card-buttons");
   const readBtn = createElement("button", cardButtonGroup, "read-btn");
-  readBtn.textContent = "Mark as read";
+  readBtn.textContent = "Edit";
   const removeBtn = createElement("button", cardButtonGroup, "remove-btn");
   removeBtn.textContent = "Remove";
   removeBtn.addEventListener("click", (e) => {
