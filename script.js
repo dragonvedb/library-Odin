@@ -131,7 +131,7 @@ cardForm.onsubmit = (e) => {
     formData.get("coverColour"),
     formData.get("textColour"),
     formData.get("coverFont"),
-    formData.get("status")
+    formData.get("readStatus")
   );
   myLibrary.push(newBook);
   newBook.createCard();
