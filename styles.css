@@ -19,7 +19,7 @@ header {
     top: 0;
     z-index: 5;
     background-color: rgba(30, 8, 8, 0.9);
-    color: aliceblue;
+    color: whitesmoke;
 }
 
 #logo {
@@ -47,13 +47,13 @@ header {
     column-gap: 25px;
     padding: 20px;
     background-color: rgba(30, 8, 8, 0.6);
-    color: aliceblue;
+    color: whitesmoke;
     border: 5px rgb(15, 5, 5) solid;
     border-radius: 10px;
 }
 
 .book-itself {
-    outline: 2px solid rgb(240, 248, 255);
+    outline: 2px solid whitesmoke;
     outline-offset: 3px;
     border-radius: 2px;
     height: fit-content;
