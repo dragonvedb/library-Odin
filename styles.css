@@ -27,6 +27,22 @@ header {
     font-weight: bold;
 }
 
+#add-card-btn {
+    appearance: none;
+    height: 75px;
+    width: 75px;
+    background-color: inherit;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-card-btn:hover {
+    background-color: rgba(63, 52, 52, 0.9);
+}
+
 #cards-container {
     display: grid;
     min-height: 100%;
