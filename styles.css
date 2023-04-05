@@ -158,8 +158,32 @@ header {
 .card-buttons {
     align-self: center;
     display: flex;
+    gap: 15px;
     height: 25px;
     justify-content: end;
+}
+
+.edit-btn, .remove-btn {
+    appearance: none;
+    height: 40px;
+    width: 40px;
+    align-self: center;
+    border: none;
+    border-radius: 50%;
+    background-color: inherit;
+    background: no-repeat center/80% url(images/trash-can.svg);
+}
+
+.edit-btn:hover, .remove-btn:hover {
+    background-color: rgba(92, 78, 78, 0.6);
+}
+
+.edit-btn {
+    background-image: url(images/book-edit.svg);
+}
+
+.remove-btn {
+    background-image: url(images/trash-can.svg);
 }
 
 #card-form {
