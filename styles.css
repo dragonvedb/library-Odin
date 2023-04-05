@@ -2,11 +2,36 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: aliceblue;
+}
+
+#logo {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
 #cards-container {
     display: grid;
-    height: 100vh;
-    width: 100vw;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    min-height: 100%;
+    width: 100%;
+    padding: 125px 25px 50px 25px;
+    grid-template-columns: repeat(auto-fill, minmax(475px, 1fr));
     grid-auto-rows: 325px;
     gap: 20px;
     background-image: url("images/Walnut_Staggered_1260x2006mm.jpg");
@@ -66,12 +91,11 @@
 }
 
 .book-info > .book-name {
-    margin: 5px 0 0;
     font-size: 1.3em;
 }
 
 .book-info > .book-author {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-style: italic;
 }
 
