@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    --dark-color: 
 }
 
 html, body {
@@ -17,7 +18,7 @@ header {
     align-items: center;
     top: 0;
     z-index: 5;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(30, 8, 8, 0.9);
     color: aliceblue;
 }
 
@@ -30,10 +31,10 @@ header {
     display: grid;
     min-height: 100%;
     width: 100%;
-    padding: 125px 25px 50px 25px;
+    padding: 120px 20px 25px 20px;
     grid-template-columns: repeat(auto-fill, minmax(475px, 1fr));
     grid-auto-rows: 325px;
-    gap: 20px;
+    gap: 15px;
     background-image: url("images/Walnut_Staggered_1260x2006mm.jpg");
 }
 
@@ -45,12 +46,14 @@ header {
     grid-template: 250px 50px / 175px 1fr;
     column-gap: 25px;
     padding: 20px;
-    border: 2px black solid;
-    
+    background-color: rgba(30, 8, 8, 0.6);
+    color: aliceblue;
+    border: 5px rgb(15, 5, 5) solid;
+    border-radius: 10px;
 }
 
 .book-itself {
-    outline: 2px solid black;
+    outline: 2px solid rgb(240, 248, 255);
     outline-offset: 3px;
     border-radius: 2px;
     height: fit-content;
