@@ -17,50 +17,51 @@
     <section id="cards-container">
         
     </section>
-    <form class="hidden" id="card-form" action="" method="GET">
-        <fieldset id='fs-title'>
-                <label for="name-field">Title:</label>
-                <input id="name-field" name="name" type="text" maxlength="75" required>
-
-                <label for="author-field">Author:</label>
-                <input id="author-field" name="author" type="text" maxlength="50" required>
-        </fieldset>
-        <fieldset id="fs-date"> 
-                <label for="date-field">Publication date:</label>
-                <input id="date-field" name="date" type="tel" maxlength="15" required>
-        </fieldset>
-        <fieldset id="fs-length">    
-                <label for="chapters-field">Chapter count:</label>
-                <input id="chapters-field" name="chapters" type="number" min="0" max="999" step="1">
-             
-                <label for="pages-field">Page count:</label>
-                <input id="pages-field" name="pages" type="number" min="1" max="9999" step="1" value="1" required>
-        </fieldset>
-        <fieldset id="fs-cover">    
-                <label for="color-field">Cover colour:</label>
-                <input id="color-field" name="coverColour" type="color" value="#ff0000">
-    
-                <label for="text-color-field">Title colour:</label>
-                <input id="text-color-field" name="textColour" type="color" value="#f5f5f5">
-
-                <label for="font-field">Cover font:</label>
-                <select id="font-field" name="coverFont">
-                    <option value="">Times New Roman</option>
-                    <option value="">Arial</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
-                </select>
-        </fieldset>
-        <fieldset id="fs-status">
-                <label for="status-field">Have you read this book?</label>
-                <input id="status-field" name="readStatus" value="read" type="checkbox">
-        </fieldset>
-        <nav id="form-buttons">
-            <button id="cancel-btn" type="reset">Cancel</button>
-            <button type="submit">Add to Library</button>
-        </nav>
-    </form>
+    <div id="form-container" class="hidden">
+        <form id="card-form" action="" method="GET">
+            <div class="tint"></div>
+            <fieldset id='fs-title'>
+                    <label for="name-field">Title:</label>
+                    <input id="name-field" name="name" type="text" maxlength="75" required>
+                    <label for="author-field">Author:</label>
+                    <input id="author-field" name="author" type="text" maxlength="50" required>
+            </fieldset>
+            <fieldset id="fs-date">
+                    <label for="date-field">Publication date:</label>
+                    <input id="date-field" name="date" type="tel" maxlength="15" required>
+            </fieldset>
+            <fieldset id="fs-length">
+                    <label for="chapters-field">Chapter count:</label>
+                    <input id="chapters-field" name="chapters" type="number" min="0" max="999" step="1">
+        
+                    <label for="pages-field">Page count:</label>
+                    <input id="pages-field" name="pages" type="number" min="1" max="9999" step="1" value="1" required>
+            </fieldset>
+            <fieldset id="fs-cover">
+                    <label for="color-field">Cover colour:</label>
+                    <input id="color-field" name="coverColour" type="color" value="#ff0000">
+        
+                    <label for="text-color-field">Title colour:</label>
+                    <input id="text-color-field" name="textColour" type="color" value="#f5f5f5">
+                    <label for="font-field">Cover font:</label>
+                    <select id="font-field" name="coverFont">
+                        <option value="">Times New Roman</option>
+                        <option value="">Arial</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                        <option value="">5</option>
+                    </select>
+            </fieldset>
+            <fieldset id="fs-status">
+                    <label for="status-field">Have you read this book?</label>
+                    <input id="status-field" name="readStatus" value="read" type="checkbox">
+            </fieldset>
+            <nav id="form-buttons">
+                <button id="cancel-btn" type="reset">Cancel</button>
+                <button type="submit">Add to Library</button>
+            </nav>
+        </form>
+    </div>
 
 <script src="script.js"></script>
 </body>

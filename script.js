@@ -113,10 +113,11 @@ Book.prototype.createCard = function () {
   });
 };
 
+const formContainer = document.getElementById("form-container");
 const cardForm = document.getElementById("card-form");
 
 function toggleForm() {
-  cardForm.classList.toggle("hidden");
+  formContainer.classList.toggle("hidden");
 }
 
 cardForm.onsubmit = (e) => {
