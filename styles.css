@@ -67,7 +67,6 @@ header {
     color: whitesmoke;
     border: 5px rgb(15, 5, 5) solid;
     border-radius: 10px;
-    box-shadow: rgba(15, 5, 5, 0.6) 0 0 15px;
 }
 
 .book-itself {
@@ -96,7 +95,7 @@ header {
     width: 175px;
     background-color: hsl(50, 100%, 95%);
     border: 5px solid red;
-    border-right: 1px solid transparent;
+    border-right: none;
     border-radius: 4px 0 0 0;
     filter: saturate(90%) brightness(90%);
 }
