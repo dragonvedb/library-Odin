@@ -137,6 +137,7 @@ cardForm.onsubmit = (e) => {
   myLibrary.push(newBook);
   newBook.createCard();
   toggleForm();
+  cardForm.reset();
 };
 
 const addCardButton = document.getElementById("add-card-btn");
