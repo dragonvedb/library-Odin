@@ -1,6 +1,7 @@
 const myLibrary = [];
 
 function Book(
+  id,
   name,
   author,
   date,
@@ -11,7 +12,7 @@ function Book(
   coverFont,
   readStatus
 ) {
-  this.id = `${myLibrary.length}`;
+  this.id = id;
   this.name = name;
   this.author = author;
   this.date = date;
@@ -34,6 +35,7 @@ cardForm.onsubmit = (e) => {
   e.preventDefault();
   const formData = new FormData(cardForm);
   const newBook = new Book(
+    formData.get("id"),
     formData.get("name"),
     formData.get("author"),
     formData.get("date"),
@@ -51,7 +53,10 @@ cardForm.onsubmit = (e) => {
 };
 
 const addCardButton = document.getElementById("add-card-btn");
-addCardButton.onclick = () => toggleForm();
+addCardButton.onclick = () => {
+  toggleForm();
+  document.getElementById("form-id").value = myLibrary.length;
+};
 
 const cancelButton = document.getElementById("cancel-btn");
 cancelButton.onclick = () => toggleForm();
@@ -138,7 +143,7 @@ Book.prototype.createCard = function () {
   const editBtn = createElement("button", cardButtonGroup, "edit-btn");
   editBtn.addEventListener("click", (e) => {
     toggleForm();
-    const formData = new FormData(cardForm);
+    document.getElementById("form-id").value = this.id;
     document.getElementById("name-field").value = this.name;
     document.getElementById("author-field").value = this.author;
     document.getElementById("date-field").value = this.date;
