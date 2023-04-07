@@ -23,6 +23,39 @@ function Book(
   this.readStatus = !!readStatus;
 }
 
+const formContainer = document.getElementById("form-container");
+const cardForm = document.getElementById("card-form");
+
+function toggleForm() {
+  formContainer.classList.toggle("hidden");
+}
+
+cardForm.onsubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData(cardForm);
+  const newBook = new Book(
+    formData.get("name"),
+    formData.get("author"),
+    formData.get("date"),
+    formData.get("chapters"),
+    formData.get("pages"),
+    formData.get("coverColour"),
+    formData.get("textColour"),
+    formData.get("coverFont"),
+    formData.get("readStatus")
+  );
+  myLibrary.push(newBook);
+  newBook.createCard();
+  toggleForm();
+  cardForm.reset();
+};
+
+const addCardButton = document.getElementById("add-card-btn");
+addCardButton.onclick = () => toggleForm();
+
+const cancelButton = document.getElementById("cancel-btn");
+cancelButton.onclick = () => toggleForm();
+
 const cardsContainer = document.querySelector("#cards-container");
 
 Book.prototype.createCard = function () {
@@ -103,6 +136,18 @@ Book.prototype.createCard = function () {
 
   const cardButtonGroup = createElement("section", newCard, "card-buttons");
   const editBtn = createElement("button", cardButtonGroup, "edit-btn");
+  editBtn.addEventListener("click", (e) => {
+    toggleForm();
+    const formData = new FormData(cardForm);
+    document.getElementById("name-field").value = this.name;
+    document.getElementById("author-field").value = this.author;
+    document.getElementById("date-field").value = this.date;
+    document.getElementById("chapters-field").value = this.chapters;
+    document.getElementById("pages-field").value = this.pages;
+    document.getElementById("color-field").value = this.coverColour;
+    document.getElementById("text-color-field").value = this.textColour;
+    document.getElementById("font-field").value = this.coverFront;
+  });
 
   const removeBtn = createElement("button", cardButtonGroup, "remove-btn");
   removeBtn.addEventListener("click", (e) => {
@@ -110,36 +155,3 @@ Book.prototype.createCard = function () {
     myLibrary.splice(myLibrary.indexOf(this), 1);
   });
 };
-
-const formContainer = document.getElementById("form-container");
-const cardForm = document.getElementById("card-form");
-
-function toggleForm() {
-  formContainer.classList.toggle("hidden");
-}
-
-cardForm.onsubmit = (e) => {
-  e.preventDefault();
-  const formData = new FormData(cardForm);
-  const newBook = new Book(
-    formData.get("name"),
-    formData.get("author"),
-    formData.get("date"),
-    formData.get("chapters"),
-    formData.get("pages"),
-    formData.get("coverColour"),
-    formData.get("textColour"),
-    formData.get("coverFont"),
-    formData.get("readStatus")
-  );
-  myLibrary.push(newBook);
-  newBook.createCard();
-  toggleForm();
-  cardForm.reset();
-};
-
-const addCardButton = document.getElementById("add-card-btn");
-addCardButton.onclick = () => toggleForm();
-
-const cancelButton = document.getElementById("cancel-btn");
-cancelButton.onclick = () => toggleForm();
