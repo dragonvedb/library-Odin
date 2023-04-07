@@ -164,5 +164,12 @@ Book.prototype.createCard = function () {
   removeBtn.addEventListener("click", (e) => {
     document.querySelector(`[data-id="${this.id}"]`).remove();
     myLibrary.splice(myLibrary.indexOf(this), 1);
+
+    for (let i = this.id; i < myLibrary.length; i++) {
+      const book = myLibrary[i];
+      const bookCard = document.querySelector(`[data-id="${book.id}"]`);
+      book.id = String(i);
+      bookCard.setAttribute("data-id", book.id);
+    }
   });
 };
