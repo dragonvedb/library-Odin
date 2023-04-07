@@ -103,13 +103,11 @@ Book.prototype.createCard = function () {
 
   const cardButtonGroup = createElement("section", newCard, "card-buttons");
   const editBtn = createElement("button", cardButtonGroup, "edit-btn");
-  /* editBtn.textContent = "Edit"; */
+
   const removeBtn = createElement("button", cardButtonGroup, "remove-btn");
-  /* removeBtn.textContent = "Remove"; */
   removeBtn.addEventListener("click", (e) => {
-    const parentCard = e.target.parentElement.parentElement;
+    document.querySelector(`[data-id="${this.id}"]`).remove();
     myLibrary.splice(myLibrary.indexOf(this), 1);
-    parentCard.remove();
   });
 };
 
