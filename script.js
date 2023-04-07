@@ -46,7 +46,7 @@ cardForm.onsubmit = (e) => {
     formData.get("coverFont"),
     formData.get("readStatus")
   );
-  myLibrary.push(newBook);
+  myLibrary.splice(formData.get("id"), 1, newBook);
   newBook.createCard();
   toggleForm();
   cardForm.reset();
@@ -75,9 +75,15 @@ Book.prototype.createCard = function () {
     return newElement;
   }
 
-  const newCard = createElement("article", cardsContainer, "book-card");
-  newCard.setAttribute("data-id", this.id);
-  if (this.readStatus) newCard.classList.add("read");
+  let newCard;
+  if (document.querySelector(`[data-id="${this.id}"]`)) {
+    newCard = document.querySelector(`[data-id="${this.id}"]`);
+    newCard.innerHTML = "";
+  } else {
+    newCard = createElement("article", cardsContainer, "book-card");
+    newCard.setAttribute("data-id", this.id);
+    if (this.readStatus) newCard.classList.add("read");
+  }
 
   const bookItself = createElement("section", newCard, "book-itself");
   const bookBlock = createElement("div", bookItself, "book-block");
