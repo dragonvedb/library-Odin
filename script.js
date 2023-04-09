@@ -1,9 +1,11 @@
-const myLibrary = [
+const myLibrary = [];
+
+const startLibrary = [
   {
     author: "J.R.R. Tolkien",
     chapters: "19",
     coverColour: "#261717",
-    coverFont: null,
+    coverFont: "4",
     date: "21.09.1973",
     id: "0",
     name: "The Hobbit",
@@ -157,18 +159,24 @@ Book.prototype.createCard = function () {
   const bookCover = createElement("div", bookItself, "book-cover");
   const coverFontFamily = () => {
     switch (this.coverFont) {
-      case 1:
-        return '"Times New Roman", serif';
-      case 2:
-        return "Helvetica, sans-serif";
-      case 3:
-        break;
-      case 4:
-        break;
-      case 5:
-        break;
+      case "1":
+        return "'Libre Baskerville', serif";
+      case "2":
+        return "'Oswald', sans-serif";
+      case "3":
+        return "'Josefin Sans', sans-serif";
+      case "4":
+        return "'Macondo', cursive";
+      case "5":
+        return "'Amarante', cursive";
+      case "6":
+        return "'Charm', cursive";
+      case "7":
+        return "'Amatic SC', cursive";
+      case "8":
+        return "'Rock Salt', cursive";
       default:
-        return "cursive";
+        return "'Libre Baskerville', serif";
     }
   };
   const coverFontSize = () => {
@@ -234,3 +242,24 @@ Book.prototype.createCard = function () {
     }
   });
 };
+
+function displayLibrary(library) {
+  for (const book of library) {
+    const bookBook = new Book(
+      book.id,
+      book.name,
+      book.author,
+      book.date,
+      book.chapters,
+      book.pages,
+      book.coverColour,
+      book.textColour,
+      book.coverFont,
+      book.readStatus
+    );
+    myLibrary.push(bookBook);
+    bookBook.createCard();
+  }
+}
+
+displayLibrary(startLibrary);
