@@ -226,8 +226,13 @@ Book.prototype.createCard = function () {
   bookDate.textContent = `Publication date: ${this.date}`;
   const bookLength = createElement("p", bookInfo, "book-length");
   if (this.chapters > 1) {
-    bookLength.textContent = `${this.chapters} chapters || ${this.pages} pages`;
-  } else bookLength.textContent = `${this.pages} pages`;
+    bookLength.textContent = `${Number(this.chapters)} chapters || ${Number(
+      this.pages
+    )} pages`;
+  } else
+    bookLength.textContent = `${Number(this.pages)} ${
+      this.pages > 1 ? "pages" : "page"
+    }`;
 
   const statusBtn = createElement("button", newCard, "status-button");
   statusBtn.addEventListener("click", (e) => {
