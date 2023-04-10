@@ -51,6 +51,18 @@ const startLibrary = [
   },
   {
     id: "4",
+    name: "Children of the Blue Flamingo",
+    author: "Vladislav Krapivin",
+    date: "1980",
+    chapters: "26",
+    pages: "224",
+    coverColour: "#f3e4ff",
+    textColour: "#184ecd",
+    coverFont: "7",
+    readStatus: true,
+  },
+  {
+    id: "5",
     name: "Critique of Pure Reason",
     author: "Immanuel Kant",
     date: "1781",
@@ -60,6 +72,18 @@ const startLibrary = [
     textColour: "#f4f0f0",
     coverFont: "6",
     readStatus: false,
+  },
+  {
+    id: "6",
+    name: "GURPS Basic Set",
+    author: "Steve Jackson",
+    date: "2004",
+    chapters: "22",
+    pages: "336",
+    coverColour: "#212b24",
+    textColour: "#f7e259",
+    coverFont: "5",
+    readStatus: true,
   },
 ];
 
@@ -172,7 +196,7 @@ Book.prototype.createCard = function () {
       case "6":
         return "'Charm', cursive";
       case "7":
-        return "'Amatic SC', cursive";
+        return "'Sue Ellen Francisco', cursive";
       case "8":
         return "'Rock Salt', cursive";
       default:
@@ -181,9 +205,9 @@ Book.prototype.createCard = function () {
   };
   const coverFontSize = () => {
     if (this.name.length < 50) {
-      return 2.75 - this.name.length * 0.035;
+      return 2.85 - this.name.length * 0.035;
     }
-    return 1;
+    return 1.1;
   };
   bookCover.setAttribute(
     "style",
