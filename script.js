@@ -103,8 +103,8 @@ function Book(
   this.name = name;
   this.author = author;
   this.date = date;
-  this.chapters = chapters;
-  this.pages = pages;
+  this.chapters = Number(chapters);
+  this.pages = Number(pages);
   this.coverColour = coverColour;
   this.textColour = textColour;
   this.coverFont = coverFont;
@@ -228,9 +228,9 @@ Book.prototype.createCard = function () {
   if (this.chapters > 1) {
     bookLength.textContent = `${Number(this.chapters)} chapters || ${Number(
       this.pages
-    )} pages`;
+    )} ${this.pages > 1 ? "pages" : "page"}`;
   } else
-    bookLength.textContent = `${Number(this.pages)} ${
+    bookLength.textContent = `${this.pages} ${
       this.pages > 1 ? "pages" : "page"
     }`;
 
